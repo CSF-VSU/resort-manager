@@ -4,7 +4,14 @@
 <html>
 <body>
 <h2>
-    ${ message }
+    <c:choose>
+        <c:when test="${random}">
+            <c:out value="${message1}"/>
+        </c:when>
+        <c:otherwise>
+            <c:out value="${message2}"/>
+        </c:otherwise>
+    </c:choose>
 </h2>
 </body>
 </html>

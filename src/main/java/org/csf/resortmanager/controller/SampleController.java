@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by agpopikov on 18/02/15.
@@ -19,7 +20,10 @@ public class SampleController {
 
     @RequestMapping("/sample")
     public String sampleMethod(ModelMap model) {
-        model.put("message", "Hello");
+        Random random = new Random();
+        model.put("random", random.nextInt(100) > 42);
+        model.put("message1", "Hello");
+        model.put("message2", "Good bye");
         return "sample/index";
     }
 
