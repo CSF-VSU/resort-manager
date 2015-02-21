@@ -22,7 +22,7 @@
             </c:forEach>
         </table>
 
-        <form:form action="/user/" method="post" modelAttribute="user">
+        <form:form method="post" modelAttribute="user">
             <label for="first_name">First Name:</label>
             <form:input type="text" id="first_name"  path="firstName"/>
             <label for="last_name">Last Name:</label>
