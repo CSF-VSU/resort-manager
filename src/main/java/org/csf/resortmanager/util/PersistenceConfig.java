@@ -8,6 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -32,6 +33,9 @@ public class PersistenceConfig {
         em.setDataSource(dataSource());
         em.setPackagesToScan(environment.getProperty("em.packages"));
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setDatabasePlatform(environment.getProperty("hibernate.databasePlatform"));
+        vendorAdapter.setGenerateDdl(Boolean.valueOf(environment.getProperty("hibernate.generateDdl")));
+        vendorAdapter.setShowSql(Boolean.valueOf(environment.getProperty("hibernate.showSql")));
         em.setJpaVendorAdapter(vendorAdapter);
         return em;
     }
