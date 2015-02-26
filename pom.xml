@@ -7,7 +7,16 @@
     <version>1.0-SNAPSHOT</version>
     <name>ResortManager Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <spring.version>4.0.6.RELEASE</spring.version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
+        <tiles.version>3.0.5</tiles.version>
+        <mysql.connector.version>5.1.34</mysql.connector.version>
+    </properties>
+
     <dependencies>
+        <!-- Java EE -->
         <dependency>
             <groupId>org.codehaus.mojo.archetypes</groupId>
             <artifactId>webapp-javaee7</artifactId>
@@ -28,17 +37,17 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -48,7 +57,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -63,48 +72,46 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.0.6.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.6.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.6.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <!-- MySQL driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.34</version>
-            <scope>provided</scope>
+            <version>${mysql.connector.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <!-- Tiles -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-core</artifactId>
-            <version>3.0.5</version>
+            <version>${tiles.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
-            <version>3.0.5</version>
+            <version>${tiles.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-extras</artifactId>
-            <version>3.0.5</version>
+            <version>${tiles.version}</version>
         </dependency>
         <!-- Jackson -->
         <dependency>
@@ -123,15 +130,23 @@
             <artifactId>modelmapper</artifactId>
             <version>0.7.3</version>
         </dependency>
+        <!-- Log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
