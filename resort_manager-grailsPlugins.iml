@@ -5,6 +5,7 @@
       <configuration>
         <webroots>
           <root url="file://$MODULE_DIR$/target/work/plugins/redis-1.6.3/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -36,6 +37,12 @@
     <content url="file://$MODULE_DIR$/target/work/plugins/redis-1.6.3">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/redis-1.6.3/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/redis-1.6.3/grails-app/taglib" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.14/grails-app/taglib" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.1.2/src/java" isTestSource="false" />

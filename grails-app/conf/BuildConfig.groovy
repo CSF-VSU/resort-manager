@@ -56,6 +56,7 @@ grails.project.dependency.resolution = {
 
         runtime ":hibernate4:4.3.6.1"
         runtime ":redis:1.6.3"
+        runtime ':resources:1.2.14'
 
     }
 }

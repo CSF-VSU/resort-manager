@@ -103,6 +103,27 @@ grails {
     }
 }
 
+grails.resources.modules = {
+    core {
+        resource url:'frameworks/bootstrap.min.css', disposition: 'head'
+        resource url:'frameworks/sb-admin.css', disposition: 'head'
+        resource url:'frameworks/font-awesome/css/font-awesome.min.css', disposition: 'head'
+        resource url:'frameworks/plugins/morris.css', disposition: 'head'
+        //
+        resource url:'frameworks/jquery.js'
+        resource url:'frameworks/bootstrap.min.js'
+        resource url:'frameworks/plugins/flot/excanvas.min.js'
+        resource url:'frameworks/plugins/flot/flot-data.js'
+        resource url:'frameworks/plugins/flot/jquery.flot.js'
+        resource url:'frameworks/plugins/flot/jquery.flot.pie.js'
+        resource url:'frameworks/plugins/flot/jquery.flot.resize.js'
+        resource url:'frameworks/plugins/flot/jquery.flot.tooltip.min.js'
+        resource url:'frameworks/plugins/morris/morris-data.js'
+        resource url:'frameworks/plugins/morris/morris.min.js'
+        resource url:'frameworks/plugins/morris/raphael.min.js'
+    }
+}
+
 // log4j configuration
 log4j.main = {
     // Example of changing the log pattern for the default console appender:
