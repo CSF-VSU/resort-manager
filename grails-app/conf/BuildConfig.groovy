@@ -55,6 +55,7 @@ grails.project.dependency.resolution = {
         compile ":asset-pipeline:1.9.9"
 
         runtime ":hibernate4:4.3.6.1"
+        runtime ":redis:1.6.3"
 
     }
 }
