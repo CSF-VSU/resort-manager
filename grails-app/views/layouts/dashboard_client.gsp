@@ -92,11 +92,6 @@
                     <h1 class="page-header">
                         Панель управления
                     </h1>
-                    <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> Панель управления
-                        </li>
-                    </ol>
                 </div>
             </div>
             <!-- /.row -->

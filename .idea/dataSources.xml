@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1016770245">
+  <component name="DataSourceManagerImpl" format="xml" hash="673105184">
     <data-source source="LOCAL" name="MySQL - resort_manager@localhost" uuid="01aa4313-35d4-45e2-92b4-16051de87949">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

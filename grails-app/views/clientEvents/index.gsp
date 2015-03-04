@@ -11,35 +11,82 @@
     <meta name="layout" content="dashboard_client"/>
     <title>События клиента</title>
 </head>
+
 <body>
-<div class="col-lg-4">
+<div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Ваши события</h3>
         </div>
+
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                     <tr>
                         <th>Событие №</th>
-                        <th>Order Date</th>
-                        <th>Order Time</th>
-                        <th>Amount (USD)</th>
+                        <th>Название</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Место проведения</th>
+                        <th>Цена</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>3326</td>
-                        <td>10/21/2013</td>
-                        <td>3:29 PM</td>
-                        <td>$321.33</td>
+                        <g:each in="${userEvents}" var="userEvent">
+                            <td>${userEvent.id}</td>
+                            <td>${userEvent.name}</td>
+                            <td>${userEvent.fromDate}</td>
+                            <td>${userEvent.toDate}</td>
+                            <td>${userEvent.place}</td>
+                            <td>${userEvent.price}</td>
+                        </g:each>
                     </tr>
-                                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Все события</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Событие №</th>
+                        <th>Название</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Место проведения</th>
+                        <th>Цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <g:each in="${allEvents}" var="event">
+                        <tr>
+                            <td>${event.id}</td>
+                            <td>${event.name}</td>
+                            <td>${event.fromDate}</td>
+                            <td>${event.toDate}</td>
+                            <td>${event.place}</td>
+                            <td>${event.price}</td>
+
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
