@@ -8,7 +8,7 @@ dataSource {
     url = "jdbc:mysql://localhost:3306/resort_manager"
     username = "resort_manager"
     password = "resort_manager"
-    dbCreate = "create-drop"
+    dbCreate = "update"
 }
 hibernate {
     show_sql = true

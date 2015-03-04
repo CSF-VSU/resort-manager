@@ -15,9 +15,10 @@ class SessionService {
      * @param email user's email
      * @return session secret
      */
-    def register(email) {
+    def register(String email) {
         def value = secretService.secret(email)
         redisService.withRedis { Jedis redis ->
+            redis.hset(key(email), 'email', email)
             redis.hset(key(email), 'secret', value)
         }
         return value
@@ -31,7 +32,9 @@ class SessionService {
      */
     def check(email, secret) {
         redisService.withRedis { Jedis redis ->
-            return redis.hget(key(email), 'secret') == secret
+            def emailValue = redis.hget(key(email), 'email')
+            def secretValue = redis.hget(key(email), 'secret')
+            return ((emailValue != null) && (emailValue == email)) && ((secretValue == secret) && (secretValue != null))
         }
     }
 
