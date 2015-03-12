@@ -1,23 +1,22 @@
 <%--
   Created by IntelliJ IDEA.
   User: agpopikov
-  Date: 01/03/15
-  Time: 01:13
+  Date: 07/03/15
+  Time: 22:15
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-  <title></title>
+    <title></title>
 </head>
+
 <body>
+<g:if test="${isRecovered}">
 
-<g:form action="recovery">
-    <label>EMail:</label>
-    <g:textField name="email" />
-    <br/>
-    <input type="submit" value="Восстановить"/>
-</g:form>
+</g:if>
+<g:else>
 
+</g:else>
 </body>
 </html>

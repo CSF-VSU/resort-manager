@@ -16,5 +16,6 @@ class RecoveryServiceSpec extends Specification {
     }
 
     void "test something"() {
+
     }
 }

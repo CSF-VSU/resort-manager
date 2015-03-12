@@ -37,8 +37,8 @@
                         <g:each in="${userEvents}" var="userEvent">
                             <td>${userEvent.id}</td>
                             <td>${userEvent.name}</td>
-                            <td>${userEvent.fromDate}</td>
-                            <td>${userEvent.toDate}</td>
+                            <td><d:extendedDate date="${userEvent.fromDate}"/></td>
+                            <td><d:extendedDate date="${userEvent.toDate}"/></td>
                             <td>${userEvent.place}</td>
                             <td>${userEvent.price}</td>
                         </g:each>
@@ -74,8 +74,8 @@
                         <tr>
                             <td>${event.id}</td>
                             <td>${event.name}</td>
-                            <td>${event.fromDate}</td>
-                            <td>${event.toDate}</td>
+                            <td><d:extendedDate date="${event.fromDate}"/></td>
+                            <td><d:extendedDate date="${event.toDate}"/></td>
                             <td>${event.place}</td>
                             <td>${event.price}</td>
 

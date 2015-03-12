@@ -12,8 +12,8 @@ class AuthController {
     }
 
     def signin() {
-        def email = params['email']
-        def password = params['password']
+        String email = params['email']
+        String password = params['password']
         def user = Client.findByEmailAndPassword(email, password)
         if (user != null) {
             def secret = sessionService.register(user.email)
@@ -32,6 +32,20 @@ class AuthController {
             session.invalidate()
         }
         redirect(action: 'index')
+    }
+
+    def forgot() {
+        if (request.method == 'GET') {
+            render(view: 'forgot', model: [isRecoverySended: true])
+        } else if (request.method == 'POST') {
+            // todo
+            render(view: 'forgot', model: [isRecoverySended: false])
+        }
+    }
+
+    def recovery() {
+        String secret = params['secret']
+        render(view: 'recovery', model: [isRecovered: recoveryService.check(secret)])
     }
 
 }

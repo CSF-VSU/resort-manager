@@ -19,7 +19,7 @@ class ClientEventsService {
         def client = Client.findByEmail(email)
         def decisions = client.events
         def decisionsKeys = decisions.collect { it.id }
-        return Event.withCriteria {
+        return Event.withCriteria([offset: count * (page - 1), max: count]) {
             inList('id', decisionsKeys as List)
         }
     }
@@ -45,6 +45,23 @@ class ClientEventsService {
         def event = Event.findById(eventId)
         def decision = new EventDecision(client: client, event: event)
         decision.save()
+    }
+
+    /**
+     *
+     * @param email
+     * @param eventId
+     * @return
+     */
+    def deleteEventFromClient(String email, Integer eventId) {
+        def client = Client.findByEmail(email)
+        def event = Event.findById(id)
+        def decision = EventDecision.findByEventAndClient(event, client)
+        if (decision) {
+            decision.delete()
+            return true
+        }
+        return false
     }
 
 }

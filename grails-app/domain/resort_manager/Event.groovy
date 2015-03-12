@@ -9,7 +9,7 @@ class Event {
     String description
     Integer price
 
-    static hasMany = [desisions: EventDecision]
+    static hasMany = [decisions: EventDecision]
 
     static constraints = {
     }
