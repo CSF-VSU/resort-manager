@@ -15,7 +15,7 @@ class ExtendedDateService {
         def day = date.getAt(DAY_OF_MONTH)
         if (current.getAt(DAY_OF_MONTH) == day) {
             return today()
-        } else if (current.previous().getAt(DAY_OF_MONTH) == day) {
+        } else if (current.next().getAt(DAY_OF_MONTH) == day) {
             return tomorrow()
         } else {
             def month = month(date.getAt(MONTH))
@@ -24,7 +24,7 @@ class ExtendedDateService {
     }
 
     private def getTimeString(Date date) {
-        return date.format('hh:mm')
+        return date.format('HH:mm')
     }
 
     private def at() {
@@ -32,7 +32,7 @@ class ExtendedDateService {
     }
 
     private def today() {
-        return 'вчера'
+        return 'сегодня'
     }
 
     private def tomorrow() {

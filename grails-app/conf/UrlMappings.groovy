@@ -8,6 +8,9 @@ class UrlMappings {
         "/client/events"(controller: 'clientEvents', action: 'index')
         "/client/events/add/$id"(controller: 'clientEvents', action: 'addEvent')
 
+        "/client/services/order"(controller: 'clientServices', action: 'order')
+        "/client/services/"(controller: 'clientServices', action: 'list')
+
         "/"(view:"/index")
         "500"(view:'/error')
 	}

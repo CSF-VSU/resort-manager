@@ -66,19 +66,20 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" data-toggle="collapse" data-target="#demo"><i
-                            class="fa fa-fw fa-arrows-v"></i> Услуги <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul class="collapse">
+                    <a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <i class="fa fa-fw fa-arrows-v"></i> Услуги <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul style="height: 0px;" aria-expanded="false" id="demo" class="collapse">
                         <li>
-                            <a href="#">Заказ услуг</a>
+                            <g:link controller="clientServices" action="order">Заказ услуг</g:link>
                         </li>
                         <li>
-                            <a href="#">История</a>
+                            <g:link controller="clientServices" action="list">Ваши услуги</g:link>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> События</a>
+                    <g:link controller="clientEvents"><i class="fa fa-fw fa-bar-chart-o"></i> События</g:link>
                 </li>
             </ul>
         </div>
