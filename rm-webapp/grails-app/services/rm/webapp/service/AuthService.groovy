@@ -5,11 +5,14 @@ import grails.transaction.Transactional
 @Transactional
 class AuthService {
 
-    def signin() {
-
+    def signin(email, password) {
+        return {
+            status: false
+            message: 'Прилетело НЛО'
+        }
     }
 
-    def signout() {
+    def signout(email, password) {
 
     }
 
