@@ -7,6 +7,7 @@ class Service {
     String phone
 
     static belongsTo = [hotel: Hotel]
+    static hasMany = [orders: Order]
 
     static constraints = {
     }

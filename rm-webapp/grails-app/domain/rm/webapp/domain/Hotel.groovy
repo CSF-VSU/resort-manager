@@ -3,6 +3,7 @@ package rm.webapp.domain
 class Hotel {
 
     String title
+    String city
     String address
     String phone
 

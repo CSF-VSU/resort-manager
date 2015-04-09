@@ -8,5 +8,6 @@ class RoomType {
     static hasMany = [rooms: Room]
 
     static constraints = {
+
     }
 }

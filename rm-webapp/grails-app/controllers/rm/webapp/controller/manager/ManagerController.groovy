@@ -7,6 +7,11 @@ class ManagerController {
     def managerService
 
     def index() {
+        return 'index'
+    }
+
+    def service() {
 
     }
+
 }
