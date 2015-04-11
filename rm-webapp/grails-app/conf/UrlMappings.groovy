@@ -1,16 +1,14 @@
 class UrlMappings {
 
-	static mappings = {
-        /*"/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }*/
+    static mappings = {
+        "/manager/"(controller: "manager")
+        "manager/client/"
+        "/manager/client/"(controller: 'managerClient')
+        "/manager/service/"(controller: 'managerService')
 
-        "/manager/client/"(controller: 'managerClient', action: 'list')
-        "/sample/"(controller: 'sample', action: 'sample')
+        "/init"(controller: 'init', action: 'init')
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
+        "/"(view: "/index")
+        "500"(view: '/error')
+    }
 }

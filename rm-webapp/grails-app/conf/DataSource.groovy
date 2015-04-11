@@ -1,3 +1,6 @@
+import org.hibernate.dialect.H2Dialect
+import org.hibernate.dialect.MySQL5InnoDBDialect
+
 dataSource {
     pooled = true
     jmxExport = true
@@ -9,7 +12,7 @@ dataSource {
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
-//    cache.region.factory_class = 'org.hibernate.cache.SingletonEhCacheRegionFactory' // Hibernate 3
+    showSql = true
     cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory' // Hibernate 4
     singleSession = true // configure OSIV singleSession mode
     flush.mode = 'manual' // OSIV session flush mode outside of transactional context
@@ -19,11 +22,12 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:3306/rm_dev"
+            dbCreate = "update"
             username = "rm_dev"
-            password = ""
+            password = "rm_dev"
             driverClassName = "com.mysql.jdbc.Driver"
+            dialect = MySQL5InnoDBDialect
+            url = "jdbc:mysql://agpopikov.me:3306/rm_dev"
         }
     }
     test {

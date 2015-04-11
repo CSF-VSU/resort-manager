@@ -1,23 +1,43 @@
 package rm.webapp.service
 
 import grails.transaction.Transactional
+import org.apache.commons.lang.ObjectUtils
 import rm.webapp.domain.Client
+import rm.webapp.domain.Service
 
 @Transactional
 class ManagerService {
 
-    def listClient(count = 10, offset = 0) {
-        Client.list(offset: offset, count: count)
+    def listClient(count, offset) {
+        Client.list(offset: ObjectUtils.defaultIfNull(offset, 0),
+                count: ObjectUtils.defaultIfNull(count, count))
     }
 
-    def registerClient(Client client) {
-        if (client.validate()) {
-            client.save()
-        } else {
+    def getServiceById(id) {
+        return Service.get(id)
+    }
 
+    def saveService(service) {
+        if (service.validate()) {
+            service.save()
+            return []
+        } else {
+            return service.errors
         }
     }
 
+    def deleteService(id) {
+        def service = Service.get(id)
+        if (service != null) {
+            service.delete()
+            return true
+        } else {
+            return false
+        }
+    }
 
-
+    def listService(count, offset) {
+        Service.list(offset: ObjectUtils.defaultIfNull(offset, 0),
+                count: ObjectUtils.defaultIfNull(count, 10))
+    }
 }

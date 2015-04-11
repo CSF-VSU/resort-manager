@@ -5,9 +5,15 @@
 *= require bootstrap/dist/css/bootstrap
 *= require bootstrap-social/bootstrap-social
 *= require metisMenu/dist/metisMenu
+*= require datatables-plugins/integration/bootstrap/3/dataTables.bootstrap
+*= require datatables-responsive/css/dataTables.responsive.min
 *= require startbootstrap-sb-admin-2/dist/css/timeline
 *= require startbootstrap-sb-admin-2/dist/css/sb-admin-2
 *= require mottisjs/morris
 *= require font-awesome/css/font-awesome
 *= encoding UTF-8
 */
+
+.table-responsive {
+    overflow-x: hidden !important;
+}

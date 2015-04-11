@@ -10,4 +10,8 @@ class Order {
     static constraints = {
 
     }
+
+    static mapping = {
+        table 'service_order'
+    }
 }

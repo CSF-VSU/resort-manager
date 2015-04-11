@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Resort Manager</a>
+            <a class="navbar-brand" href="<g:createLink controller="manager" action="index"/>">Resort Manager</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -59,13 +59,16 @@
                         </g:link>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Услуги<span class="fa arrow"></span></a>
+                        <g:link controller="managerService" action="list"><i class="fa fa-edit fa-fw"></i> Услуги</g:link>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Заказы<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <g:link controller="managerClient" action="list">Все клиенты</g:link>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <g:link controller="managerClient" action="register">Регистрация</g:link>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -74,10 +77,10 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Клиенты<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li>
-                                <g:link controller="managerClient" methods="list">Все клиенты</g:link>
+                                <g:link controller="managerClient" action="list">Все клиенты</g:link>
                             </li>
                             <li>
-                                <g:link controller="managerClient" methods="register">Регистрация</g:link>
+                                <g:link controller="managerClient" action="register">Регистрация</g:link>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -160,120 +163,8 @@
     </nav>
 
     <div id="page-wrapper" style="min-height: 850px;">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Dashboard</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-comments fa-5x"></i>
-                            </div>
-
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
-
-                                <div>New Comments!</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-5x"></i>
-                            </div>
-
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
-
-                                <div>New Tasks!</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
-                            </div>
-
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
-
-                                <div>New Orders!</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-support fa-5x"></i>
-                            </div>
-
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
-
-                                <div>Support Tickets!</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#">
-                        <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <g:layoutBody/>
     </div>
-    <g:layoutBody/>
     <!-- /#page-wrapper -->
 
 </div>

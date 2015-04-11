@@ -6,6 +6,7 @@ class InitController {
 
     def init() {
         sampleDataService.initDb()
+        render('ok')
     }
 
 }
