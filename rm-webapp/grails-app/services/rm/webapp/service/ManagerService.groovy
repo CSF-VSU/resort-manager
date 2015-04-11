@@ -36,8 +36,7 @@ class ManagerService {
         }
     }
 
-    def listService(count, offset) {
-        Service.list(offset: ObjectUtils.defaultIfNull(offset, 0),
-                count: ObjectUtils.defaultIfNull(count, 10))
+    def listService() {
+        Service.list()
     }
 }

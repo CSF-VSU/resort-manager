@@ -11,14 +11,17 @@ class SampleDataService {
 
     def initDb() {
         initHotels()
-        initEvents()
-        initStaff()
+        // initEvents()
+        // initStaff()
+        initServices()
     }
 
     private def initHotels() {
-        new Hotel(title: 'Бангладеж', city: 'Воронеж', address: '', phone: '+7 (47332) 2-233-235').save(flush: true)
-        new Hotel(title: 'ВАИ', city: 'Воронеж', address: '', phone: '+7 (47332) 2-125-124').save()
-        new Hotel(title: '', city: 'Воронеж', address: '', phone: '+7 (47332) 2-879-124').save()
+        def hotels = Hotel.list()
+        Hotel.deleteAll(hotels)
+        new Hotel(title: 'Бангладеж', city: 'Воронеж', address: 'пр. Революции, 21', phone: '+7 (47332) 2-233-235').save()
+        new Hotel(title: 'ВАИ', city: 'Воронеж', address: 'ул. Лизюкова, 14', phone: '+7 (47332) 2-125-124').save()
+        new Hotel(title: 'Benefit Plaza', city: 'Воронеж', address: 'ул. Плехановская, 42', phone: '+7 (47332) 2-879-124').save()
     }
 
     private def initEvents() {

@@ -10,5 +10,6 @@ class Service {
     static hasMany = [orders: Order]
 
     static constraints = {
+        hotel nullable: true
     }
 }

@@ -18,7 +18,8 @@ window.DataTableUtil = {
             'ordering': false,
             'info': false,
             'language': {
-                'emptyTable': 'Ничего не найдено.',
+                'emptyTable': 'Список услуг пуст.',
+                'zeroRecords': 'Ничего не найдено.',
                 'lengthMenu': 'Показывать по:   _MENU_',
                 'search': 'Поиск',
                 'paginate': {

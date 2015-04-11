@@ -9,7 +9,7 @@ class ManagerServiceController {
     }
 
     def list() {
-        def services = managerService.listService(count, offset)
+        def services = managerService.listService()
         render(view: '/manager/service/list', model: [services: services]);
     }
 
@@ -17,20 +17,21 @@ class ManagerServiceController {
         render(view: '/manager/service/edit', model: [service: null])
     }
 
-    def remove(id) {
+    def remove() {
+        def id = params['id']
         if (!managerService.deleteService(id)) {
             flash.message = 'При удалении услуги произошла ошибка.'
         }
-        list()
+        redirect(action: 'index')
     }
 
-    def update(id) {
+    def update() {
+        def id = params['id']
         def service = managerService.getServiceById(id)
         render(view: '/manager/service/edit', model: [service: service])
     }
 
-    def save() {
-        def service = params['service']
+    def save(service) {
         def errors = managerService.saveService(service)
         if (errors == null) {
             flash.message = 'Услуга успешно сохранена.'

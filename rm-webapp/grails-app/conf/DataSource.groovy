@@ -7,12 +7,12 @@ dataSource {
     driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
+    loggingSql = true
 }
 
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
-    showSql = true
     cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory' // Hibernate 4
     singleSession = true // configure OSIV singleSession mode
     flush.mode = 'manual' // OSIV session flush mode outside of transactional context
@@ -22,12 +22,12 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             username = "rm_dev"
             password = "rm_dev"
             driverClassName = "com.mysql.jdbc.Driver"
             dialect = MySQL5InnoDBDialect
-            url = "jdbc:mysql://agpopikov.me:3306/rm_dev"
+            url = "jdbc:mysql://agpopikov.me:3306/rm_dev?useUnicode=yes&characterEncoding=UTF-8"
         }
     }
     test {

@@ -17,3 +17,11 @@
 .table-responsive {
     overflow-x: hidden !important;
 }
+
+.data-table tr td form {
+    margin: 0;
+}
+
+.data-table tr td:last-child {
+    text-align: center;
+}

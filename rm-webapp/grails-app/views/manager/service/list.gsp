@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <meta name="layout" content="manager">
     <title></title>
 </head>
 
@@ -22,7 +23,7 @@
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Hover Rows
+            Список всех услуг
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -44,7 +45,20 @@
                             <td>${service.title}</td>
                             <td>${service.description}</td>
                             <td>${service.phone}</td>
-                            <td></td>
+                            <td>
+                                <g:form method="post">
+                                    <button type="submit" class="btn btn-primary btn-circle"
+                                            formaction="<g:createLink controller="managerService" action="update"
+                                                                      params="[id: service.id]"/>">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-danger btn-circle"
+                                            formaction="<g:createLink controller="managerService" action="remove"
+                                                                      params="[id: service.id]"/>" formmethod="post">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                </g:form>
+                            </td>
                         </tr>
                     </g:each>
                     </tbody>
@@ -56,6 +70,5 @@
     </div>
     <!-- /.panel -->
 </div>
-
 </body>
 </html>
