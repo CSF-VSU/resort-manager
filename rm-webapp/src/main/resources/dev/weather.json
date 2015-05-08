@@ -1,0 +1,188 @@
+{
+  "cod": "200",
+  "message": 0.0284,
+  "city": {
+    "id": "472045",
+    "name": "Voronezh",
+    "coord": {
+      "lon": 39.2069,
+      "lat": 51.6678
+    },
+    "country": "Russia",
+    "population": 0
+  },
+  "cnt": 7,
+  "list": [
+    {
+      "dt": 1430902800,
+      "temp": {
+        "day": 287.93,
+        "min": 279.64,
+        "max": 288.37,
+        "night": 279.64,
+        "eve": 287.09,
+        "morn": 286.15
+      },
+      "pressure": 1011.99,
+      "humidity": 73,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "ясно",
+          "icon": "01d"
+        }
+      ],
+      "speed": 7.5,
+      "deg": 35,
+      "clouds": 0
+    },
+    {
+      "dt": 1430989200,
+      "temp": {
+        "day": 286.7,
+        "min": 277.71,
+        "max": 288.09,
+        "night": 279.94,
+        "eve": 287.75,
+        "morn": 277.71
+      },
+      "pressure": 1009.62,
+      "humidity": 76,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "ясно",
+          "icon": "01d"
+        }
+      ],
+      "speed": 4.46,
+      "deg": 47,
+      "clouds": 0
+    },
+    {
+      "dt": 1431075600,
+      "temp": {
+        "day": 287.68,
+        "min": 277.76,
+        "max": 289.37,
+        "night": 282.94,
+        "eve": 289.37,
+        "morn": 277.76
+      },
+      "pressure": 1007.09,
+      "humidity": 79,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "ясно",
+          "icon": "01d"
+        }
+      ],
+      "speed": 3.12,
+      "deg": 55,
+      "clouds": 0
+    },
+    {
+      "dt": 1431162000,
+      "temp": {
+        "day": 288.02,
+        "min": 277.87,
+        "max": 288.02,
+        "night": 277.87,
+        "eve": 282.96,
+        "morn": 285.43
+      },
+      "pressure": 1008.4,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "легкий дождь",
+          "icon": "10d"
+        }
+      ],
+      "speed": 3.65,
+      "deg": 87,
+      "clouds": 20
+    },
+    {
+      "dt": 1431248400,
+      "temp": {
+        "day": 289.02,
+        "min": 282.95,
+        "max": 289.02,
+        "night": 282.95,
+        "eve": 285.81,
+        "morn": 287.17
+      },
+      "pressure": 1009.41,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "легкий дождь",
+          "icon": "10d"
+        }
+      ],
+      "speed": 3.44,
+      "deg": 142,
+      "clouds": 50,
+      "rain": 1.64
+    },
+    {
+      "dt": 1431334800,
+      "temp": {
+        "day": 291.86,
+        "min": 281.52,
+        "max": 291.86,
+        "night": 281.52,
+        "eve": 286.48,
+        "morn": 288.71
+      },
+      "pressure": 1011.5,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "легкий дождь",
+          "icon": "10d"
+        }
+      ],
+      "speed": 3.23,
+      "deg": 120,
+      "clouds": 20,
+      "rain": 0.78
+    },
+    {
+      "dt": 1431421200,
+      "temp": {
+        "day": 293.3,
+        "min": 284.92,
+        "max": 293.3,
+        "night": 284.92,
+        "eve": 288.79,
+        "morn": 290.79
+      },
+      "pressure": 1006.62,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "легкий дождь",
+          "icon": "10d"
+        }
+      ],
+      "speed": 1.74,
+      "deg": 269,
+      "clouds": 21,
+      "rain": 0.57
+    }
+  ]
+}

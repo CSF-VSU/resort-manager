@@ -1,0 +1,12 @@
+.modal-footer {
+    border-top: 0;
+}
+
+.login-box {
+    height: 250px;
+}
+
+.login-box > h4 {
+    text-align: center;
+    color: #a94442;
+}

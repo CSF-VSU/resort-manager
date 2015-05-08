@@ -1,0 +1,44 @@
+<configuration>
+    <property scope="context" name="CONTEXT_NAME" value="rm-webapp"/>
+    <contextName>${CONTEXT_NAME}</contextName>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{1}:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="STASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/newapp-logstash.json.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/newapp-logstash.json.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/newapp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>logs/newapp-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{1}:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.csf.rm.webapp" level="debug" />
+
+    <root level="warn">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STASH" />
+    </root>
+</configuration>

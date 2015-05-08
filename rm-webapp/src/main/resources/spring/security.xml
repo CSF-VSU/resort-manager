@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:http use-expressions="true" auto-config="true">
+        <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
+        <security:intercept-url pattern="/static/**" access="permitAll"/>
+        <security:intercept-url pattern="/auth/login" access="permitAll"/>
+        <security:intercept-url pattern="/*" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/client/**" access="hasRole('client')"/>
+        <security:intercept-url pattern="/manager/**" access="hasRole('manager')"/>
+        <security:form-login login-page="/auth/login"
+                             default-target-url="/auth/loginSuccess"
+                             authentication-failure-url="/auth/loginError"/>
+        <security:access-denied-handler error-page="/accessDenied"/>
+        <security:logout logout-success-url="/auth/login"/>
+    </security:http>
+
+    <bean id="org.springframework.security.authenticationManager"
+          class="org.springframework.security.authentication.ProviderManager">
+        <constructor-arg name="providers">
+            <list>
+                <ref local="daoAuthenticationProvider"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean name="daoAuthenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService" ref="authService"/>
+    </bean>
+</beans>

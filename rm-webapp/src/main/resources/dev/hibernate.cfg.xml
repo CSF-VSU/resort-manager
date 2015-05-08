@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://agpopikov.me:3306/rm_dev?useUnicode=true;characterEncoding=UTF-8</property>
+        <property name="hibernate.connection.username">rm_dev</property>
+        <property name="hibernate.connection.password">rm_dev</property>
+
+        <mapping class="org.csf.rm.webapp.jdo.entity.Client"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.User"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Client"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Room"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Manager"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Order"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Service"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Accommodation"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Event"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Hotel"/>
+
+    </session-factory>
+</hibernate-configuration>

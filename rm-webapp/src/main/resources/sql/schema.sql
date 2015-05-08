@@ -1,0 +1,257 @@
+DROP SCHEMA rm_dev;
+CREATE SCHEMA rm_dev;
+USE rm_dev;
+
+-- -----------------------------------------------------
+-- Table USERS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS USERS (
+  USER_ID  BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  EMAIL    VARCHAR(128) NOT NULL,
+  PASSWORD VARCHAR(128) NOT NULL,
+  ROLE     VARCHAR(128) NOT NULL,
+  PRIMARY KEY (USER_ID),
+  UNIQUE INDEX EMAIL (EMAIL ASC),
+  INDEX PASSWORD (PASSWORD ASC)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table CLIENTS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CLIENTS (
+  CLIENT_ID BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  FULL_NAME VARCHAR(512) NOT NULL,
+  EMAIL     VARCHAR(128) NOT NULL,
+  PHONE     VARCHAR(16)  NOT NULL,
+  PASSPORT  VARCHAR(64)  NOT NULL,
+  USER_ID   BIGINT(20)   NOT NULL,
+  PRIMARY KEY (CLIENT_ID),
+  UNIQUE INDEX EMAIL (EMAIL ASC),
+  UNIQUE INDEX PHONE (PHONE ASC),
+  UNIQUE INDEX PASSPORT (PASSPORT ASC),
+  INDEX USER_ID (USER_ID ASC),
+  CONSTRAINT CLIENTS_ibfk_1
+  FOREIGN KEY (USER_ID)
+  REFERENCES USERS (USER_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table HOTELS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS HOTELS (
+  HOTEL_ID BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  ADDRESS  VARCHAR(512) NOT NULL,
+  CITY     VARCHAR(64)  NOT NULL,
+  PHONE    VARCHAR(16)  NOT NULL,
+  PRIMARY KEY (HOTEL_ID),
+  UNIQUE INDEX PHONE (PHONE ASC)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table ROOMS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS ROOMS (
+  ROOM_ID  BIGINT(20) NOT NULL AUTO_INCREMENT,
+  NUMBER   INT(11)    NOT NULL,
+  CAPACITY INT(11)    NOT NULL,
+  HOTEL_ID BIGINT(20) NOT NULL,
+  PRIMARY KEY (ROOM_ID),
+  UNIQUE INDEX NUMBER (NUMBER ASC),
+  INDEX HOTEL_ID (HOTEL_ID ASC),
+  CONSTRAINT ROOMS_ibfk_1
+  FOREIGN KEY (HOTEL_ID)
+  REFERENCES HOTELS (HOTEL_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table ACCOMMODATIONS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS ACCOMMODATIONS (
+  ACCOMMODATION_ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+  FROM_DATE        DATE       NOT NULL,
+  TO_DATE          DATE       NOT NULL,
+  CLIENT_ID        BIGINT(20) NOT NULL,
+  ROOM_ID          BIGINT(20) NOT NULL,
+  PRIMARY KEY (ACCOMMODATION_ID),
+  INDEX CLIENT_ID (CLIENT_ID ASC),
+  INDEX ROOM_ID (ROOM_ID ASC),
+  CONSTRAINT ACCOMMODATIONS_ibfk_1
+  FOREIGN KEY (CLIENT_ID)
+  REFERENCES CLIENTS (CLIENT_ID),
+  CONSTRAINT ACCOMMODATIONS_ibfk_2
+  FOREIGN KEY (ROOM_ID)
+  REFERENCES ROOMS (ROOM_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table EVENTS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS EVENTS (
+  EVENT_ID    BIGINT(20)     NOT NULL AUTO_INCREMENT,
+  TITLE       VARCHAR(512)   NOT NULL,
+  PLACE       VARCHAR(512)   NOT NULL,
+  DESCRIPTION TEXT           NULL     DEFAULT NULL,
+  PRICE       DECIMAL(10, 0) NOT NULL,
+  PRIMARY KEY (EVENT_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table MANAGERS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS MANAGERS (
+  MANAGER_ID BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  FULL_NAME  VARCHAR(512) NOT NULL,
+  HOTEL_ID   BIGINT(20)   NOT NULL,
+  USER_ID    BIGINT(20)   NOT NULL,
+  PRIMARY KEY (MANAGER_ID),
+  INDEX USER_ID (USER_ID ASC),
+  INDEX HOTEL_ID (HOTEL_ID ASC),
+  CONSTRAINT MANAGERS_ibfk_1
+  FOREIGN KEY (USER_ID)
+  REFERENCES USERS (USER_ID),
+  CONSTRAINT MANAGERS_ibfk_2
+  FOREIGN KEY (HOTEL_ID)
+  REFERENCES HOTELS (HOTEL_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table SERVICES
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS SERVICES (
+  SERVICE_ID  BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  TITLE       VARCHAR(512) NOT NULL,
+  DESCRIPTION TEXT         NULL     DEFAULT NULL,
+  HOTEL_ID    BIGINT(20)   NOT NULL,
+  PRIMARY KEY (SERVICE_ID),
+  INDEX HOTEL_ID (HOTEL_ID ASC),
+  CONSTRAINT SERVICES_ibfk_1
+  FOREIGN KEY (HOTEL_ID)
+  REFERENCES HOTELS (HOTEL_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table ORDERS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS ORDERS (
+  ORDER_ID   BIGINT(20) NOT NULL AUTO_INCREMENT,
+  COMMENT    TEXT       NULL     DEFAULT NULL,
+  CLIENT_ID  BIGINT(20) NOT NULL,
+  SERVICE_ID BIGINT(20) NOT NULL,
+  PRIMARY KEY (ORDER_ID),
+  INDEX SERVICE_ID (SERVICE_ID ASC),
+  INDEX CLIENT_ID (CLIENT_ID ASC),
+  CONSTRAINT ORDERS_ibfk_1
+  FOREIGN KEY (SERVICE_ID)
+  REFERENCES SERVICES (SERVICE_ID),
+  CONSTRAINT ORDERS_ibfk_2
+  FOREIGN KEY (CLIENT_ID)
+  REFERENCES CLIENTS (CLIENT_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table ORDER_STATUSES
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS ORDER_STATUSES (
+  ORDER_STATUS_ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+  TITLE           TEXT       NULL     DEFAULT NULL,
+  DESCRIPTION     TEXT       NULL     DEFAULT NULL,
+  PRIMARY KEY (ORDER_STATUS_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table STAFF_POSITIONS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS STAFF_POSITIONS (
+  STAFF_POSITION_ID BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  TITLE             VARCHAR(128) NOT NULL,
+  DESCRIPTION       TEXT         NULL     DEFAULT NULL,
+  PRIMARY KEY (STAFF_POSITION_ID),
+  UNIQUE INDEX TITLE (TITLE ASC)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table STAFF
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS STAFF (
+  STAFF_ID          BIGINT(20)   NOT NULL AUTO_INCREMENT,
+  PHONE             VARCHAR(16)  NOT NULL,
+  STAFF_POSITION_ID BIGINT(20)   NOT NULL,
+  FULL_NAME         VARCHAR(512) NOT NULL,
+  PRIMARY KEY (STAFF_ID),
+  UNIQUE INDEX PHONE (PHONE ASC),
+  INDEX STAFF_POSITION_ID (STAFF_POSITION_ID ASC),
+  CONSTRAINT STAFF_ibfk_1
+  FOREIGN KEY (STAFF_POSITION_ID)
+  REFERENCES STAFF_POSITIONS (STAFF_POSITION_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table STAFF_HOTELS
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS STAFF_HOTELS (
+  STAFF_ID BIGINT(20) NOT NULL,
+  HOTEL_ID BIGINT(20) NOT NULL,
+  PRIMARY KEY (STAFF_ID, HOTEL_ID),
+  INDEX HOTEL_ID (HOTEL_ID ASC),
+  CONSTRAINT STAFF_HOTELS_ibfk_1
+  FOREIGN KEY (HOTEL_ID)
+  REFERENCES HOTELS (HOTEL_ID),
+  CONSTRAINT STAFF_HOTELS_ibfk_2
+  FOREIGN KEY (STAFF_ID)
+  REFERENCES STAFF (STAFF_ID)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+--
+-- Imports
+--
+-- -----------------------------------------------------
+INSERT INTO USERS (EMAIL, PASSWORD, ROLE) VALUES ('manager@rm.com', '0000', 'MANAGER');
+INSERT INTO USERS (EMAIL, PASSWORD, ROLE) VALUES ('clientr@rm.com', '0000', 'CLIENT');
+
+INSERT INTO ORDER_STATUSES(ORDER_STATUS_ID, TITLE, DESCRIPTION) VALUES (1, 'Не подтверждён', 'Заказ ожидает подтверждения.');
+INSERT INTO ORDER_STATUSES(TITLE, DESCRIPTION) VALUES ('Подтверждён', 'Заказ подтверждён и ожидает обработки.');
+INSERT INTO ORDER_STATUSES(TITLE, DESCRIPTION) VALUES ('В обработке', 'Заказ находится в обработке.');
+INSERT INTO ORDER_STATUSES(TITLE, DESCRIPTION) VALUES ('Завершён', 'Заказ выполнен.');
+INSERT INTO ORDER_STATUSES(TITLE, DESCRIPTION) VALUES ('Отменён', 'Заказ отменён.');
+
+
+
