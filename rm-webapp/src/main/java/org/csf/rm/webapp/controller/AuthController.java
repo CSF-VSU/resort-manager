@@ -1,4 +1,4 @@
-package org.csf.rm.webapp.controller.auth;
+package org.csf.rm.webapp.controller;
 
 import org.csf.rm.webapp.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;

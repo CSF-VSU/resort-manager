@@ -20,6 +20,7 @@
         <mapping class="org.csf.rm.webapp.jdo.entity.Accommodation"/>
         <mapping class="org.csf.rm.webapp.jdo.entity.Event"/>
         <mapping class="org.csf.rm.webapp.jdo.entity.Hotel"/>
+        <mapping class="org.csf.rm.webapp.jdo.entity.Place"/>
 
     </session-factory>
 </hibernate-configuration>

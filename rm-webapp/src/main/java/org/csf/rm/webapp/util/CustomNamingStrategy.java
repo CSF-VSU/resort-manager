@@ -12,4 +12,8 @@ public class CustomNamingStrategy extends ImprovedNamingStrategy {
         return tableName.toUpperCase();
     }
 
+    @Override
+    public String columnName(String columnName) {
+        return columnName.toUpperCase();
+    }
 }

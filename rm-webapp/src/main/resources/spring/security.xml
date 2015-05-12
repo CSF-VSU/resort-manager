@@ -8,7 +8,7 @@
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
         <security:intercept-url pattern="/static/**" access="permitAll"/>
         <security:intercept-url pattern="/auth/login" access="permitAll"/>
-        <security:intercept-url pattern="/*" access="isAuthenticated()"/>
+        <security:intercept-url pattern="**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/client/**" access="hasRole('client')"/>
         <security:intercept-url pattern="/manager/**" access="hasRole('manager')"/>
         <security:form-login login-page="/auth/login"

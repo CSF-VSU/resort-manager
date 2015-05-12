@@ -2,18 +2,21 @@ package org.csf.rm.webapp.jdo.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 
 /**
  * Created by andreypopikov on 02/05/15.
  */
 @Entity
-@Table(name = "\"EVENTS\"")
+@Table(name = "EVENTS")
 public class Event {
 
     private Long id;
     private String title;
-    private String place;
+    private Place place;
     private String description;
+    private Date from;
+    private Date to;
     private BigDecimal price;
 
     @Id
@@ -36,15 +39,6 @@ public class Event {
         this.title = title;
     }
 
-    @Column(name = "PLACE")
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
     @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
@@ -61,5 +55,33 @@ public class Event {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Column(name = "FROM_DATE")
+    public Date getFrom() {
+        return from;
+    }
+
+    public void setFrom(Date from) {
+        this.from = from;
+    }
+
+    @Column(name = "TO_DATE")
+    public Date getTo() {
+        return to;
+    }
+
+    public void setTo(Date to) {
+        this.to = to;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PLACE_ID")
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }
